@@ -1,0 +1,44 @@
+{
+  "name": "ava-all-practice",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "nyc ava",
+    "test:watch": "ava --watch",
+    "report": "nyc report --reporter=html",
+    "build": "BABEL_ENV=production babel --out-dir=dist index.js"
+  },
+  "author": "KeKe",
+  "ava": {
+    "files": [
+      "test/*.js"
+    ],
+    "failFast": false,
+    "tap": true,
+    "require": [
+      "babel-core/register",
+      "./test/helpers/setup-browser-env.js"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ],
+    "ignore": "test",
+    "env": {
+      "development": {
+        "sourceMaps": "inline"
+      }
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.15.1",
+    "coveralls": "^2.11.9",
+    "jsdom": "^9.2.1",
+    "nyc": "^6.4.3"
+  }
+}
